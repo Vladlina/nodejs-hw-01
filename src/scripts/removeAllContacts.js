@@ -1,17 +1,16 @@
 import { readContacts } from '../utils/readContacts.js';
 import { writeContacts } from '../utils/writeContacts.js';
 
-export const removeLastContact = async () => {
+export const removeAllContacts = async () => {
   try {
     let dbContacts = await readContacts();
 
-    if (dbContacts.length > 0) {
-      dbContacts.pop();
+    dbContacts = [];
 
-      await writeContacts(dbContacts);
-    }
+    await writeContacts(dbContacts);
   } catch (err) {
     console.error(err);
   }
 };
-removeLastContact();
+
+removeAllContacts();
